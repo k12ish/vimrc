@@ -1,6 +1,9 @@
+set nocompatible
+
 syntax enable
 set background=dark
-colorscheme solarized
+let base16colorspace=256
+set termguicolors
 
 set showcmd    " shows <leader> key timeout
 
@@ -17,9 +20,6 @@ set number
 
 " Execute python scripts with <F5>
 autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:ter python3 "%"<CR>
-
-" UPPERCASES current word
-nnoremap <Leader>u viwU
 
 " Change my Vimrc file
 nnoremap <leader>ev :split $MYVIMRC<cr>
@@ -44,9 +44,21 @@ let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
 
+Plug 'chriskempson/base16-vim'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
+Plug 'Chiel92/vim-autoformat'
+let g:formatter_yapf_style = 'facebook'
+autocmd BufWrite * :Autoformat
+
+Plug 'rust-lang/rust.vim'
+
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 call plug#end()
 
+" colorscheme base16-material-darker
+colorscheme gruvbox
 " Linux specific
 :autocmd VimEnter * silent! !setxkbmap -option caps:swapescape
 
