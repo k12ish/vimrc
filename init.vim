@@ -18,11 +18,18 @@ set sidescrolloff=5
 set relativenumber
 set number
 
+" When a file has been detected to have been changed outside of Vim and
+" it has not been changed inside of Vim, automatically read it again.
+set autoread
+
 " Execute python scripts with <F5>
 autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:ter python3 "%"<CR>
 
-" Change my Vimrc file
+" Edit my Vimrc file
 nnoremap <leader>ev :split $MYVIMRC<cr>
+
+" Quick-save
+nnoremap <leader>w :w<cr>
 
 
 " Foster good habits: Remove functionality of arrow keys
@@ -55,6 +62,7 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+
 call plug#end()
 
 " colorscheme base16-material-darker
