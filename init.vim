@@ -31,6 +31,12 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 " Quick-save
 nnoremap <leader>w :w<cr>
 
+" Exit/Navigate from terminal mode
+:tnoremap <Esc> <C-\><C-n>
+:tnoremap <C-h> <C-\><C-N><C-w>h
+:tnoremap <C-j> <C-\><C-N><C-w>j
+:tnoremap <C-k> <C-\><C-N><C-w>k
+:tnoremap <C-l> <C-\><C-N><C-w>l
 
 " Foster good habits: Remove functionality of arrow keys
 nnoremap <up> <nop>
