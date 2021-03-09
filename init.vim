@@ -1,4 +1,5 @@
 set nocompatible
+set noswapfile
 
 syntax enable
 set background=dark
@@ -11,29 +12,20 @@ set expandtab  " Convert tabs to spaces
 set autoindent " New lines inherit indentation
 
 " Number of lines and chars to keep around cursor
-set scrolloff=4
-set sidescrolloff=5
+set scrolloff=4 sidescrolloff=5
 
 " Hybrid line numbering
-set relativenumber
-set number
+set relativenumber number
 
 " When a file has been detected to have been changed outside of Vim and
 " it has not been changed inside of Vim, automatically read it again.
 set autoread
 
-" Execute python scripts with <F5>
-autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:ter python3 "%"<CR>
-
 " Edit my Vimrc file
 nnoremap <leader>ev :split $MYVIMRC<cr>
 
-" Quick-save
-nnoremap <leader>w :w<cr>
-
 " New buffer opens below/right
-set splitbelow
-set splitright
+set splitbelow splitright
 
 " Exit/Navigate from terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -41,6 +33,8 @@ tnoremap <C-w>h <C-\><C-N><C-w>h
 tnoremap <C-w>j <C-\><C-N><C-w>j
 tnoremap <C-w>k <C-\><C-N><C-w>k
 tnoremap <C-w>l <C-\><C-N><C-w>l
+
+autocmd TermOpen * setlocal nonumber norelativenumber
 
 " Foster good habits: Remove functionality of arrow keys
 nnoremap <up> <nop>
@@ -61,15 +55,15 @@ let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
 
-Plug 'chriskempson/base16-vim'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-
 Plug 'Chiel92/vim-autoformat'
 let g:formatter_yapf_style = 'facebook'
-autocmd BufWrite * :Autoformat
+autocmd BufWrite *.go,*.rs :Autoformat
+nnoremap <leader>w :w<cr>:Autoformat<cr>
 
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'rust-lang/rust.vim'
 
+" {{ Tim Pope Plugins }}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
