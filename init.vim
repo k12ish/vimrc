@@ -63,9 +63,13 @@ nnoremap <leader>w :w<cr>:Autoformat<cr>
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'rust-lang/rust.vim'
 
+" Switch between line/multiline statements with `gS` and `gJ`
+Plug 'AndrewRadev/splitjoin.vim'
+
 " {{ Tim Pope Plugins }}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
