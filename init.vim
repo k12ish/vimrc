@@ -1,28 +1,32 @@
+" enter the current millenium
 set nocompatible
+syntax enable
+filetype plugin on
+
 set noswapfile
 
-syntax enable
 set background=dark
 let base16colorspace=256
 set termguicolors
 
+set ignorecase  " case sensitive only if capital in search
 set showcmd    " shows <leader> key timeout
 
 set expandtab  " Convert tabs to spaces
 set autoindent " New lines inherit indentation
 
-" Number of lines and chars to keep around cursor
 set scrolloff=4 sidescrolloff=5
-
-" Hybrid line numbering
-set relativenumber number
+set relativenumber number  " Hybrid line numbering
 
 " When a file has been detected to have been changed outside of Vim and
 " it has not been changed inside of Vim, automatically read it again.
 set autoread
 
-" Edit my Vimrc file
+" Edit/Source my Vimrc file
 nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :w<cr>:so %<cr>
+set autochdir   " Open Terminal in current dir
+
 
 " New buffer opens below/right
 set splitbelow splitright
@@ -61,7 +65,9 @@ autocmd BufWrite *.go,*.rs :Autoformat
 nnoremap <leader>w :w<cr>:Autoformat<cr>
 
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
 Plug 'rust-lang/rust.vim'
+Plug 'ycm-core/YouCompleteMe'
 
 " Switch between line/multiline statements with `gS` and `gJ`
 Plug 'AndrewRadev/splitjoin.vim'
