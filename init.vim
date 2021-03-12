@@ -1,54 +1,35 @@
-" enter the current millenium
+" Enter the Current Millenium
 set nocompatible
 syntax enable
 filetype plugin on
 
-set noswapfile
-
 set background=dark
 let base16colorspace=256
 set termguicolors
+colorscheme gruvbox
 
-set ignorecase  " case sensitive only if capital in search
-set showcmd    " shows <leader> key timeout
+set autochdir           " Open Terminal in current dir
+set autoread            " Autoread file if edited outside vim
+set ignorecase          " Case Sensitive only if capital letter in search
+set mouse=a             " Use Mouse!
+set noswapfile          " Don't create Swapfiles
+set showcmd             " Shows <leader> key timeout
+set showmatch           " Shows matching parenthesis
 
-set expandtab  " Convert tabs to spaces
-set autoindent " New lines inherit indentation
+set autoindent          " New lines inherit indentation
+set expandtab           " Convert tabs to spaces
+set softtabstop=4       " On <BS>, pretend like a tab is removed, even if spaces
 
+set relativenumber number
 set scrolloff=4 sidescrolloff=5
-set relativenumber number  " Hybrid line numbering
-
-" When a file has been detected to have been changed outside of Vim and
-" it has not been changed inside of Vim, automatically read it again.
-set autoread
+set splitbelow splitright
 
 " Edit/Source my Vimrc file
 nnoremap <leader>ev :split $MYVIMRC<cr>
-nnoremap <leader>sv :w<cr>:so %<cr>
-set autochdir   " Open Terminal in current dir
-
-
-" New buffer opens below/right
-set splitbelow splitright
-
-" Exit/Navigate from terminal mode
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-w>h <C-\><C-N><C-w>h
-tnoremap <C-w>j <C-\><C-N><C-w>j
-tnoremap <C-w>k <C-\><C-N><C-w>k
-tnoremap <C-w>l <C-\><C-N><C-w>l
+nnoremap <leader>so :w<cr>:so %<cr>
 
 autocmd TermOpen * setlocal nonumber norelativenumber
-
-" Foster good habits: Remove functionality of arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+autocmd VimEnter * silent! !setxkbmap -option caps:swapescape
 
 " Plugins installed with `vim-plug`
 call plug#begin()
@@ -65,7 +46,6 @@ autocmd BufWrite *.go,*.rs :Autoformat
 nnoremap <leader>w :w<cr>:Autoformat<cr>
 
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-
 Plug 'rust-lang/rust.vim'
 Plug 'ycm-core/YouCompleteMe'
 
@@ -73,14 +53,26 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " {{ Tim Pope Plugins }}
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
 
 call plug#end()
 
-" colorscheme base16-material-darker
-colorscheme gruvbox
-" Linux specific
-:autocmd VimEnter * silent! !setxkbmap -option caps:swapescape
+" Exit/Navigate from terminal mode
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-w>h <C-\><C-N><C-w>h
+tnoremap <C-w>j <C-\><C-N><C-w>j
+tnoremap <C-w>k <C-\><C-N><C-w>k
+tnoremap <C-w>l <C-\><C-N><C-w>l
+
+" Foster good habits: No more arrow keys!
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
