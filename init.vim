@@ -11,7 +11,8 @@ colorscheme gruvbox
 set autochdir           " Open Terminal in current dir
 set autoread            " Autoread file if edited outside vim
 set ignorecase          " Case Sensitive only if capital letter in search
-set mouse=a             " Use Mouse!
+set mouse=a             " Use Mouse in all modes
+set mousefocus          " Window with mouse is v\utofocused
 set noswapfile          " Don't create Swapfiles
 set showcmd             " Shows <leader> key timeout
 set showmatch           " Shows matching parenthesis
@@ -31,22 +32,33 @@ nnoremap <leader>so :w<cr>:so %<cr>
 autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd VimEnter * silent! !setxkbmap -option caps:swapescape
 
-" Plugins installed with `vim-plug`
+" Plugins installed with `vim-plug
 call plug#begin()
 
 " Auto-complete brackets
 Plug 'tmsvg/pear-tree'
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
+let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_pairs = {
+                        \ '(': {'closer': ')'},
+                        \ '[': {'closer': ']'},
+                        \ '{': {'closer': '}'},
+                        \ "'": {'closer': "'"},
+                        \ '"': {'closer': '"'},
+                        \ '<': {'closer': '>'}
+                        \ }
 
 Plug 'Chiel92/vim-autoformat'
 let g:formatter_yapf_style = 'facebook'
 autocmd BufWrite *.go,*.rs :Autoformat
 nnoremap <leader>w :w<cr>:Autoformat<cr>
 
+" Syntax highlighting for Python
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
 Plug 'rust-lang/rust.vim'
+
 Plug 'ycm-core/YouCompleteMe'
 
 " Switch between line/multiline statements with `gS` and `gJ`
