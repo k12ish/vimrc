@@ -10,12 +10,12 @@ set termguicolors
 colorscheme gruvbox
 
 set autochdir           " Open Terminal in current dir
-set autoread            " Autoread file if edited outside vim
+set autoread            " Auto read file if edited outside vim
 set ignorecase          " Case Sensitive only if capital letter in search
 set linebreak           " wrap lines at words
 set mouse=a             " Use Mouse in all modes
-set mousefocus          " Window with mouse is autofocused
-set noswapfile          " Don't create Swapfiles
+set mousefocus          " Window with mouse is auto focused
+set noswapfile          " Don't create Swap files
 set showcmd             " Shows <leader> key timeout
 set showmatch           " Shows matching parenthesis
 set spell               " Enable Spell check
