@@ -18,7 +18,6 @@ set mousefocus          " Window with mouse is auto focused
 set noswapfile          " Don't create Swap files
 set showcmd             " Shows <leader> key timeout
 set showmatch           " Shows matching parenthesis
-set spell               " Enable Spell check
 set spelllang=en_gb     " Use British English
 
 set autoindent          " New lines inherit indentation
@@ -36,10 +35,21 @@ nnoremap <leader>so :w<cr>:so %<cr>
 autocmd TermOpen * setlocal nonumber norelativenumber nospell
 autocmd VimEnter * silent! !setxkbmap -option caps:swapescape
 
-" Plugins installed with `vim-plug`
+" ---------------------Plugins installed with `vim-plug`----------------------
 call plug#begin()
 
-" {{ Tim Pope Plugins }}
+" UI improvements
+" ----------------------------------------------------------------------------
+
+Plug 'itchyny/lightline.vim'
+set noshowmode
+
+" Highlight yank for visual feedback
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = 400
+
+" Text Manipulation/Motion
+" ----------------------------------------------------------------------------
 
 Plug 'tpope/vim-repeat'
 " Comment using `gc`
@@ -48,14 +58,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 " Exchange two pieces of text with `cx{motion}`, cancel with `cxc`
 Plug 'tommcdo/vim-exchange'
-
-" Highlight yank for visual feedback
-Plug 'machakann/vim-highlightedyank'
-let g:highlightedyank_highlight_duration = 400
-
 " Switch between line/multiline statements with `gS` and `gJ`
 Plug 'AndrewRadev/splitjoin.vim'
-
 " Auto-complete brackets
 Plug 'tmsvg/pear-tree'
 let g:pear_tree_smart_backspace = 1
@@ -70,10 +74,21 @@ let g:formatter_yapf_style = 'facebook'
 autocmd BufWrite *.go,*.rs :Autoformat
 nnoremap <leader>w :w<cr>:Autoformat<cr>
 
+" Docstring, Function & Class text objects `ad/id/af/if/ac/ic`
+Plug 'jeetsukumaran/vim-pythonsense'
+" `sab` to move to the next instance of `ab`, `S` is backwards
+Plug 'justinmk/vim-sneak'
+
+
+" Language Specific Highlighting
+" ----------------------------------------------------------------------------
+
 " Syntax highlighting for Python
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 Plug 'rust-lang/rust.vim'
+
+Plug 'cespare/vim-toml'
 
 Plug 'ycm-core/YouCompleteMe'
 
