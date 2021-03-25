@@ -38,6 +38,7 @@ autocmd VimEnter * silent! !setxkbmap -option caps:swapescape
 " ---------------------Plugins installed with `vim-plug`----------------------
 call plug#begin()
 
+
 " UI improvements
 " ----------------------------------------------------------------------------
 
@@ -47,6 +48,8 @@ set noshowmode
 " Highlight yank for visual feedback
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 400
+
+Plug 'preservim/nerdtree'
 
 " Text Manipulation/Motion
 " ----------------------------------------------------------------------------
@@ -74,6 +77,15 @@ let g:formatter_yapf_style = 'facebook'
 autocmd BufWrite *.go,*.rs :Autoformat
 nnoremap <leader>w :w<cr>:Autoformat<cr>
 
+Plug 'chaoren/vim-wordmotion'
+let g:wordmotion_mappings = {
+                        \ 'w' : '<M-w>', 'ge' : 'g<M-e>',
+                        \ 'e' : '<M-e>', 'iw' : 'i<M-w>',
+                        \ 'b' : '<M-b>', 'aw' : 'a<M-w>',
+                        \ '<C-R><C-W>' : '<C-R><M-w>' }
+call wordmotion#reload()
+
+
 " Docstring, Function & Class text objects `ad/id/af/if/ac/ic`
 Plug 'jeetsukumaran/vim-pythonsense'
 " `sab` to move to the next instance of `ab`, `S` is backwards
@@ -82,6 +94,9 @@ Plug 'justinmk/vim-sneak'
 
 " Language Specific Highlighting
 " ----------------------------------------------------------------------------
+" Plug 'dense-analysis/ale'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
 " Syntax highlighting for Python
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
@@ -90,7 +105,6 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'cespare/vim-toml'
 
-Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
 
