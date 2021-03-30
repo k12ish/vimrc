@@ -11,7 +11,7 @@ colorscheme gruvbox
 
 set autochdir           " Open Terminal in current dir
 set autoread            " Auto read file if edited outside vim
-set ignorecase          " Case Sensitive only if capital letter in search
+set ignorecase          " Case sensitive if capital letter in search
 set linebreak           " wrap lines at words
 set mouse=a             " Use Mouse in all modes
 set mousefocus          " Window with mouse is auto focused
@@ -22,7 +22,12 @@ set spelllang=en_gb     " Use British English
 
 set autoindent          " New lines inherit indentation
 set expandtab           " Convert tabs to spaces
-set softtabstop=4       " On <BS>, pretend like a tab is removed, even if spaces
+set softtabstop=4       " On <BS> pretend like a tab is removed
+
+if executable("rg")
+        set grepprg=rg\ --vimgrep\ --no-heading
+        set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 set relativenumber number
 set scrolloff=4 sidescrolloff=5
@@ -83,7 +88,6 @@ let g:wordmotion_mappings = {
                         \ 'e' : '<M-e>', 'iw' : 'i<M-w>',
                         \ 'b' : '<M-b>', 'aw' : 'a<M-w>',
                         \ '<C-R><C-W>' : '<C-R><M-w>' }
-call wordmotion#reload()
 
 
 " Docstring, Function & Class text objects `ad/id/af/if/ac/ic`
