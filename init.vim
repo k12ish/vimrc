@@ -52,7 +52,7 @@ set noshowmode
 
 " Highlight yank for visual feedback
 Plug 'machakann/vim-highlightedyank'
-let g:highlightedyank_highlight_duration = 400
+let g:highlightedyank_highlight_duration = 200
 
 " Text Manipulation/Motion
 " ----------------------------------------------------------------------------
@@ -127,3 +127,8 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+" Screen lines by default: Swap `j` and `gj`
+nnoremap j gj
+nnoremap gj j
+nnoremap k gk
+nnoremap gk k
