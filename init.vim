@@ -112,10 +112,6 @@ call plug#end()
 
 " Exit/Navigate from terminal mode
 tnoremap <Esc> <C-\><C-n>
-tnoremap <C-w>h <C-\><C-N><C-w>h
-tnoremap <C-w>j <C-\><C-N><C-w>j
-tnoremap <C-w>k <C-\><C-N><C-w>k
-tnoremap <C-w>l <C-\><C-N><C-w>l
 
 " Foster good habits: No more arrow keys!
 nnoremap <up> <nop>
