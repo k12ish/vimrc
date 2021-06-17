@@ -78,6 +78,7 @@ let g:pear_tree_pairs = { '(': {'closer': ')'}, '[': {'closer': ']'},
 Plug 'Chiel92/vim-autoformat'
 let g:formatter_yapf_style = 'facebook'
 autocmd BufWrite *.go,*.rs :Autoformat
+autocmd FileType html,js,css let b:autoformat_autoindent=0
 nnoremap <leader>w :w<cr>:Autoformat<cr>
 
 Plug 'chaoren/vim-wordmotion'
