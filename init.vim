@@ -20,13 +20,16 @@ set showcmd             " Shows <leader> key timeout
 set showmatch           " Shows matching parenthesis
 set spelllang=en_gb     " Use British English
 
+filetype plugin indent on
 set autoindent          " New lines inherit indentation
-set expandtab           " Convert tabs to spaces
-set softtabstop=4       " On <BS> pretend like a tab is removed
+set tabstop=4           " show existing tab with 4 spaces width
+set shiftwidth=4        " when indenting with '>', use 4 spaces width
+set expandtab           " On pressing tab, insert 4 spaces
+
 
 if executable("rg")
-        set grepprg=rg\ --vimgrep\ --no-heading
-        set grepformat=%f:%l:%c:%m,%f:%l:%m
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 set relativenumber number
@@ -72,21 +75,20 @@ let g:pear_tree_smart_backspace = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_openers = 1
 let g:pear_tree_pairs = { '(': {'closer': ')'}, '[': {'closer': ']'},
-                        \ '{': {'closer': '}'}, "'": {'closer': "'"},
-                        \ '<': {'closer': '>'}, '"': {'closer': '"'}}
+            \ '{': {'closer': '}'}, "'": {'closer': "'"},
+            \ '<': {'closer': '>'}, '"': {'closer': '"'}}
 
 Plug 'Chiel92/vim-autoformat'
 let g:formatter_yapf_style = 'facebook'
 autocmd BufWrite *.go,*.rs :Autoformat
-autocmd FileType html,js,css let b:autoformat_autoindent=0
 nnoremap <leader>w :w<cr>:Autoformat<cr>
 
 Plug 'chaoren/vim-wordmotion'
 let g:wordmotion_mappings = {
-                        \ 'w' : '<M-w>', 'ge' : 'g<M-e>',
-                        \ 'e' : '<M-e>', 'iw' : 'i<M-w>',
-                        \ 'b' : '<M-b>', 'aw' : 'a<M-w>',
-                        \ '<C-R><C-W>' : '<C-R><M-w>' }
+            \ 'w' : '<M-w>', 'ge' : 'g<M-e>',
+            \ 'e' : '<M-e>', 'iw' : 'i<M-w>',
+            \ 'b' : '<M-b>', 'aw' : 'a<M-w>',
+            \ '<C-R><C-W>' : '<C-R><M-w>' }
 
 
 " Docstring, Function & Class text objects `ad/id/af/if/ac/ic`
