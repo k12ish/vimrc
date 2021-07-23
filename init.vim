@@ -80,8 +80,8 @@ let g:pear_tree_pairs = { '(': {'closer': ')'}, '[': {'closer': ']'},
 
 Plug 'Chiel92/vim-autoformat'
 let g:formatter_yapf_style = 'facebook'
-autocmd BufWrite *.go,*.rs :Autoformat
-nnoremap <leader>w :w<cr>:Autoformat<cr>
+autocmd BufWrite *.go,*.rs,*.py,*.vim :Autoformat
+nnoremap <leader>w :w<cr>
 
 Plug 'chaoren/vim-wordmotion'
 let g:wordmotion_mappings = {
@@ -110,6 +110,7 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'cespare/vim-toml'
 
+Plug 'NoahTheDuke/vim-just'
 
 call plug#end()
 
