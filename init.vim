@@ -25,6 +25,8 @@ set autoindent          " New lines inherit indentation
 set tabstop=4           " show existing tab with 4 spaces width
 set shiftwidth=4        " when indenting with '>', use 4 spaces width
 set expandtab           " On pressing tab, insert 4 spaces
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType js setlocal shiftwidth=2 tabstop=2
 
 
 if executable("rg")
@@ -80,7 +82,7 @@ let g:pear_tree_pairs = { '(': {'closer': ')'}, '[': {'closer': ']'},
 
 Plug 'Chiel92/vim-autoformat'
 let g:formatter_yapf_style = 'facebook'
-autocmd BufWrite *.go,*.rs,*.py,*.vim :Autoformat
+autocmd BufWrite *.go,*.rs,*.py :Autoformat
 nnoremap <leader>w :w<cr>
 
 Plug 'chaoren/vim-wordmotion'
@@ -99,12 +101,19 @@ Plug 'justinmk/vim-sneak'
 
 " Language Specific Highlighting
 " ----------------------------------------------------------------------------
-" Plug 'dense-analysis/ale'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'neovim/nvim-lspconfig'
 
 " Syntax highlighting for Python
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+nmap <silent> <leader>rr :Semshi rename<CR>
+nmap <silent> <leader>c :Semshi goto class next<CR>
+nmap <silent> <leader>C :Semshi goto class prev<CR>
+nmap <silent> <leader>f :Semshi goto function next<CR>
+nmap <silent> <leader>F :Semshi goto function prev<CR>
+
+
+Plug 'JuliaEditorSupport/julia-vim'
 
 Plug 'rust-lang/rust.vim'
 
@@ -113,6 +122,15 @@ Plug 'cespare/vim-toml'
 Plug 'NoahTheDuke/vim-just'
 
 call plug#end()
+
+" Up for first tab
+nnoremap <C-t>k :tabr<cr> 
+" Down For last tab
+nnoremap <C-t>j :tabl<cr>
+" Left for previous tab
+nnoremap <C-t>h :tabp<cr>
+" Right for next tab
+nnoremap <C-t>l :tabn<cr>
 
 " Exit/Navigate from terminal mode
 tnoremap <Esc> <C-\><C-n>
